@@ -21,6 +21,7 @@ const flash = require("connect-flash");
 const listingsRouter = require("./routers/listings.js");
 const reviewsRouter = require("./routers/review.js");
 const userRouter = require("./routers/user.js");
+const wishlistRoutes = require('./routers/wishlist'); // Import wishlist routes
 const session = require("express-session");
 const MongoStore = require('connect-mongo');
 const passport = require("passport");
@@ -108,6 +109,7 @@ app.use((req, res, next) => {
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
+app.use('/wishlist', wishlistRoutes); // Register wishlist routes
 
 
 app.all("*", (req, res, next) => {
